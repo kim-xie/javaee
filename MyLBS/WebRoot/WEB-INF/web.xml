@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>lbs</display-name>
+  <!-- 设置统一编码过滤器 -->
+  <filter>
+  	<filter-name>CharacterFilter</filter-name>
+  	<filter-class>com.my.core.CharacterFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>CharacterFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <!-- 注册CityServlet -->
+  <servlet>
+    <servlet-name>CityServlet</servlet-name>
+    <servlet-class>com.my.web.CityServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CityServlet</servlet-name>
+    <url-pattern>/city</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 注册ProvinceServlet -->
+  <servlet>
+    <servlet-name>ProvinceServlet</servlet-name>
+    <servlet-class>com.my.web.ProvinceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProvinceServlet</servlet-name>
+    <url-pattern>/Province</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 注册AreaServlet -->
+  <servlet>
+    <servlet-name>AreaServlet</servlet-name>
+    <servlet-class>com.my.web.AreaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AreaServlet</servlet-name>
+    <url-pattern>/area</url-pattern>
+  </servlet-mapping>
+</web-app>
