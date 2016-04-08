@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.king.dao.UserMapper">
+	
+	<select id="findAll" resultMap="userResultMap">
+			select * from user
+	</select>
+	
+	<select id="findById" parameterType="integer" resultMap="userResultMap">
+			select * from user where id=#{id}
+			
+			<!-- if -->
+			<!-- select * from user where 1=1
+			<if test="id!=null">
+				and id=#{id}
+			</if> -->
+			
+			<!-- where -->
+			<!-- select * from user
+			<where>
+				<if test="id!=null">
+					id=#{id}
+				</if>
+			</where>  -->
+			
+			<!-- 定义前缀和后缀 -->
+			<!-- select * from user
+			<trim prefix="where" suffixOverrides="and|or ">
+				<if test="id!=null">
+					id=#{id}
+				</if>
+			</trim> -->
+			
+			<!-- 遍历数组、 集合 、map的collection为map的key -->
+			<!-- select * from user where id in
+		 	<foreach item="c" collection="list" open="(" separator="," close=")">
+		        #{c}
+		  	</foreach> -->
+			
+	</select>
+	
+	<insert id="save" parameterMap="userParameterMap">
+			INSERT INTO USER(name,password) VALUES(#{name},#{password})
+	</insert>
+	
+	<update id="update" parameterMap="userParameterMap">
+			<!-- update user set name=#{name},password=#{password} where id=#{id} -->
+			update user
+			<set>
+				<if test="name!=null">name=#{name},</if>
+				<if test="password!=null">password=#{password}</if>
+				where id=#{id}
+			</set>
+	</update>
+	
+	<delete id="delete" parameterType="integer">
+			delete from user where id=#{id}
+	</delete>
+	
+	<!-- 当数据库的字段名和实体类的属性名不一致时会在实体类里自动创建与表相同的字段属性名   以下可以解决该问题 -->
+	<parameterMap type="com.king.bean.User" id="userParameterMap">
+		<parameter property="id" resultMap="id"/>
+	    <parameter property="name" resultMap="name"/>
+	    <parameter property="password" resultMap="password"/>
+	    <parameter property="sex" resultMap="sex"/>
+	    <parameter property="age" resultMap="age"/>
+	    <parameter property="email" resultMap="email"/>
+	    <parameter property="tel" resultMap="tel"/>
+	    <parameter property="createTime" resultMap="create_time"/>
+	    <parameter property="updateTime" resultMap="update_time"/>
+	    <parameter property="headerPic" resultMap="header_pic"/>
+	    <parameter property="active" resultMap="active"/>
+	    <parameter property="isDelete" resultMap="is_delete"/>
+	</parameterMap>
+	
+	<!-- 当数据库的字段名和实体类的属性名不一致时会在实体类里自动创建与表相同的字段属性名   以下可以解决该问题 -->
+	<resultMap type="com.king.bean.User" id="userResultMap">
+	    <id property="id" column="id"/>
+	    <result property="name" column="name"/>
+	    <result property="password" column="password"/>
+	    <result property="sex" column="sex"/>
+	    <result property="age" column="age"/>
+	    <result property="email" column="email"/>
+	    <result property="tel" column="tel"/>
+	    <result property="createTime" column="create_time"/>
+	    <result property="updateTime" column="update_time"/>
+	    <result property="headerPic" column="header_pic"/>
+	    <result property="active" column="active"/>
+	    <result property="isDelete" column="is_delete"/>
+    </resultMap>
+	
+
+</mapper>

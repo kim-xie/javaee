@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.king.dao.ContentMapper">
+	<select id="findAll" resultMap="contentResultMap">
+			select * from content
+	</select>
+	<select id="findById" parameterType="integer" resultMap="contentResultMap">
+			select * from content where id=#{id}
+	</select>
+	<insert id="save" parameterMap="contentParameterMap">
+			insert into content(content,title,pic) values(#{content},#{title},#{pic}) 
+	</insert>
+	<update id="update" parameterMap="contentParameterMap">
+			update content set content=#{content},title=#{title},pic=#{pic} where id=#{id}
+	</update>
+	<delete id="delete" parameterType="integer">
+			delete from content where id=#{id}
+	</delete>
+	<!-- 当实体类与字段不一致是使用 -->
+	<parameterMap type="com.king.bean.Content" id="contentParameterMap">
+		<parameter property="id" resultMap="id"/>
+	    <parameter property="content" resultMap="content"/>
+	    <parameter property="title" resultMap="title"/>
+	    <parameter property="pic" resultMap="pic"/>
+	    <parameter property="createTime" resultMap="create_time"/>
+	    <parameter property="updateTime" resultMap="update_time"/>
+	</parameterMap>
+	<!-- 当实体类与字段不一致是使用 -->
+	<resultMap type="com.king.bean.Content" id="contentResultMap">
+	    <id property="id" column="id"/>
+	    <result property="content" column="content"/>
+	    <result property="title" column="title"/>
+	    <result property="pic" column="pic"/>
+	    <result property="createTime" column="create_time"/>
+	    <result property="updateTime" column="update_time"/>
+    </resultMap>
+	
+
+</mapper>
