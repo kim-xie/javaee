@@ -1,0 +1,120 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <!-- 父类：用于统一管理、统一修改不用在子类上面一个一个的修改版本 -->
+  <groupId>king.parent</groupId>
+  <artifactId>king.parent</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  
+  <!-- 设置常量方便下面引用 -->
+  <properties>
+  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  	<!-- 常量便于统一修改 -->
+  	<hibernate.version>4.3.11.Final</hibernate.version>
+  </properties>
+  
+  <!-- 与nexus连接的第一种方式 -->
+  <!-- <repositories>
+  	<repository>
+  		<id>nexus</id>
+  		<name>nexus repository</name>
+  		<url>http://localhost:8081/nexus/content/groups/public/</url>
+  		远程的releases和snapshots默认是禁止下载的
+  		<releases>
+  			<enabled>true</enabled>
+  		</releases>
+  		<snapshots>
+  			<enabled>true</enabled>
+  		</snapshots>
+  	</repository> -->
+  	<!-- 上面与下面的相同 -->
+  	<!-- <repository>
+  		<id>nexus</id>
+  		<name>nexus repository</name>
+  		<url>http://localhost:8081/nexus/content/repositories/central/</url>
+  		远程的releases和snapshots默认是禁止下载的
+  		<releases>
+  			<enabled>true</enabled>
+  		</releases>
+  		<snapshots>
+  			<enabled>true</enabled>
+  		</snapshots>
+  	</repository>
+  	<repository>
+  		<id>nexus apache</id>
+  		<name>nexus apache repository</name>
+  		<url>http://localhost:8081/nexus/content/repositories/apache-snapshots/</url>
+  		<releases>
+  			<enabled>true</enabled>
+  		</releases>
+  		<snapshots>
+  			<enabled>true</enabled>
+  		</snapshots>
+  	</repository> 
+  </repositories>-->
+  <!-- 与nexus连接的第二种方式是到settings中的profiles和mirror进行配置 -->
+  
+  <!-- 父类的相关依赖 -->
+  <dependencyManagement>
+  	<dependencies>
+	  	<!-- 测试单元包 -->
+	    <dependency>
+	      <groupId>junit</groupId>
+	      <artifactId>junit</artifactId>
+	      <version>4.10</version>
+	      <scope>test</scope>
+	    </dependency>
+
+	    <!-- king dao -->
+	    <dependency>
+	    	<groupId>Hibernate-Dao</groupId>
+ 			<artifactId>king.dao</artifactId>
+ 			<version>${project.version}</version>
+	    </dependency>
+	    <!-- mysql数据驱动包 -->
+	    <dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.16</version>
+		</dependency>
+		<!-- hibernate依赖包 -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<!-- 日志包 -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+		
+		<!-- king service -->
+		<dependency>
+			<groupId>Hibernate-service</groupId>
+  			<artifactId>king.service</artifactId>
+  			<version>${project.version}</version>
+		</dependency>
+		
+		<!-- king web -->
+		<dependency>
+			 <groupId>king.web</groupId>
+  			 <artifactId>king.web</artifactId>
+  			 <version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+	
+  	</dependencies>
+  </dependencyManagement>
+</project>

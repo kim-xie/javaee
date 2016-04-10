@@ -1,0 +1,45 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <!-- 继承父类 -->
+  <parent>
+  	  <groupId>king.parent</groupId>
+	  <artifactId>king.parent</artifactId>
+	  <version>0.0.1-SNAPSHOT</version>
+	  <relativePath>../king.parent/pom.xml</relativePath>
+  </parent>
+  
+  <groupId>king.web</groupId>
+  <artifactId>king.web</artifactId>
+  <packaging>war</packaging>
+  <name>king.web Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+ 
+  <!-- 依赖的包 -->
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+    
+    <dependency>
+    	<groupId>Hibernate-service</groupId>
+  		<artifactId>king.service</artifactId>
+    </dependency>
+    
+    <dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>javax.servlet-api</artifactId>
+	</dependency>
+	
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>jstl</artifactId>
+	</dependency>
+	    
+  </dependencies>
+ 
+  <build>
+    <finalName>king.web</finalName>
+  </build>
+</project>

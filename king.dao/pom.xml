@@ -1,0 +1,52 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <!-- 继承父类 -->
+  <parent>
+  	  <groupId>king.parent</groupId>
+	  <artifactId>king.parent</artifactId>
+	  <version>0.0.1-SNAPSHOT</version>
+	  <relativePath>../king.parent/pom.xml</relativePath>
+  </parent>
+  
+  <groupId>Hibernate-Dao</groupId>
+  <artifactId>king.dao</artifactId>
+  <packaging>jar</packaging>
+
+  <name>king.dao</name>
+  <url>http://maven.apache.org</url>
+
+  <!-- 常量配置 -->
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <!-- 依赖的包 -->
+  <dependencies>
+  	
+  	<!-- 测试单元包 -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+   
+    <!-- mysql数据驱动包 -->
+    <dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+	</dependency>
+	
+	<!-- hibernate依赖包 -->
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-entitymanager</artifactId>
+	</dependency>
+	
+	<!-- 日志包 -->
+	<dependency>
+		<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+	</dependency>
+	
+  </dependencies>
+</project>
